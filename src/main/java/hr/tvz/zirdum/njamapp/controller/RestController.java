@@ -2,6 +2,7 @@ package hr.tvz.zirdum.njamapp.controller;
 
 import hr.tvz.zirdum.njamapp.dto.RestaurantCommand;
 import hr.tvz.zirdum.njamapp.dto.RestaurantDTO;
+import hr.tvz.zirdum.njamapp.model.Restaurant;
 import hr.tvz.zirdum.njamapp.service.RestaurantService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
@@ -12,8 +13,10 @@ import org.springframework.web.server.ResponseStatusException;
 import java.util.List;
 import java.util.Optional;
 
+
 @org.springframework.web.bind.annotation.RestController
 @RequestMapping("/restaurant")
+@CrossOrigin(origins = "http://localhost:4200")
 public class RestController {
 
     private final RestaurantService restaurantService;
@@ -27,6 +30,10 @@ public class RestController {
         return restaurantService.findAll();
     }
 
+    @GetMapping("/allmodel")
+    public List<Restaurant> getAllModelRestaurants() {
+        return restaurantService.findAllModel();
+    }
 
     @GetMapping("/{id}")
     public ResponseEntity<RestaurantDTO> getRestaurantById(@PathVariable Long id) {

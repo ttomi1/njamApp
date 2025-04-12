@@ -79,10 +79,19 @@ public class RestaurantServiceImpl implements RestaurantService {
         }
     }
 
+    @Override
+    public List<Restaurant> findAllModel() {
+        return restaurantRepository.findAll()
+                .stream()
+                .toList();
+    }
+
     private RestaurantDTO convertToDTO(Restaurant restaurant) {
         int activeOrders = getRandomOrderCount();
         return new RestaurantDTO(restaurant, activeOrders);
     }
+
+
 
     private int getRandomOrderCount() {
         return new Random().nextInt(10, 100);

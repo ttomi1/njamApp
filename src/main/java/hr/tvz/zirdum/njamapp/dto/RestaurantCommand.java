@@ -3,9 +3,9 @@ package hr.tvz.zirdum.njamapp.dto;
 import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.util.Map;
 
 
 @Data
@@ -36,23 +36,6 @@ public class RestaurantCommand {
     private Integer michelinStar;
     @NotBlank(message = "Description cannot be empty")
     private String shortDescription;
-    public enum WorkTime {
-        MONDAY("08:00-22:00"),
-        TUESDAY("08:00-22:00"),
-        WEDNESDAY("08:00-22:00"),
-        THURSDAY("08:00-22:00"),
-        FRIDAY("08:00-23:00"),
-        SATURDAY("09:00-23:00"),
-        SUNDAY("09:00-22:00");
-
-        private String time;
-
-        WorkTime(String time) {
-            this.time = time;
-        }
-
-        public String getTime() {
-            return time;
-        }
-    }
+    @NotEmpty(message = "Work time must not be empty")
+    private Map<String, String> workTime;
 }

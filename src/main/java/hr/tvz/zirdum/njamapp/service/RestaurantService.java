@@ -2,6 +2,7 @@ package hr.tvz.zirdum.njamapp.service;
 
 import hr.tvz.zirdum.njamapp.dto.RestaurantCommand;
 import hr.tvz.zirdum.njamapp.dto.RestaurantDTO;
+import hr.tvz.zirdum.njamapp.model.Restaurant;
 
 import java.util.List;
 
@@ -13,4 +14,8 @@ public interface RestaurantService {
     RestaurantCommand saveOrUpdate(RestaurantCommand restaurantCommand);
     void deleteRestaurant(Long id);
     RestaurantDTO findRestaurantByName(String name);
+
+
+    //Test Model
+    List<Restaurant> findAllModel();
 }
